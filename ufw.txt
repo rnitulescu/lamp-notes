@@ -5,9 +5,12 @@
 ## Check applications registered with ufw 
 # > ufw app list
 
-## Allow connections to apps on that list
-# > ufw allow <appname>
-# > ufw allow '<app name>' ## if App name appears with spaces in app list
+## Get detailed info on apps, eg:
+# > ufw app info "Apache Full"
+
+## Allow connections from apps on that list
+# > ufw allow in <appname>
+# > ufw allow in '<app name>' ## if App name appears with spaces in app list
 
 ## Enable the firewall 
 # > ufw enable

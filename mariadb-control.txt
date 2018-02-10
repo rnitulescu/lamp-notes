@@ -1,0 +1,20 @@
+## All below commands to be prefaced by 'sudo'
+
+## Start server
+# > systemctl start mysql
+
+## Check status
+# > systemctl status mysql
+
+## Stop server (need to shut down from within database, before ending the server process)
+# > mysqladmin shutdown -u root -p
+# > (password... enter)
+# > systemclt stop mysql
+
+## Disable auto-start at boot
+# > systemctl disable mysql
+## This seems to have issues though.
+
+## Enable auto-start at boot
+# > systemctl enable mysql
+

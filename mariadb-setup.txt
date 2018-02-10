@@ -1,0 +1,45 @@
+## Install and setup mariadb for LAMP
+
+## Links:
+## https://www.howtoforge.com/tutorial/install-apache-with-php-and-mysql-on-ubuntu-16-04-lamp/
+## https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-16-04
+## https://www.linuxquestions.org/questions/linux-software-2/mysql-mariadb-install-root-password-not-working-4175602071/
+## https://www.itzgeek.com/how-tos/linux/ubuntu-how-tos/install-mariadb-on-ubuntu-16-04.html
+
+## Issue with mariadb due to unix_socket dedault plugin on ubuntu:
+## https://stackoverflow.com/questions/28068155/access-denied-for-user-rootlocalhost-using-password-yes-after-new-instal
+
+## Install package
+# > apt-get install mariadb-server mariadb-client
+
+## Removing instructions here:
+## https://askubuntu.com/questions/806107/remove-mariadb-mysql-databases
+## http://www.akinstech.com/mariadb-installation-problems-with-ubuntu-16-04-running-on-openvz/
+
+## Run secure config script which sets up root password
+# > mysql_secure_installation ## Seems to only work with sudo in front
+
+## Script will ask these questons:
+# Enter current password for root (enter for none): <-- press enter
+# Set root password? [Y/n] <-- y
+# New password: <-- Enter the new MariaDB root password here
+# Re-enter new password: <-- Repeat the password
+# Remove anonymous users? [Y/n] <-- y
+# Disallow root login remotely? [Y/n] <-- y
+# Reload privilege tables now? [Y/n] <-- y
+
+## Now try to connect as root
+# > mysql -u root -p
+
+## Why does it now work??
+## Potential solution here:
+## https://stackoverflow.com/questions/28068155/access-denied-for-user-rootlocalhost-using-password-yes-after-new-instal
+## Explanation: unix_socket loggin default means that to loggin as root in db,
+## I must be logged in as root on the computer!
+## So, we connect to mysql as root with sudo and change the default back to
+## native password...
+# > sudo mysql -u root -p
+# > UPDATE mysql.user SET plugin = 'mysql_native_password' WHERE user = 'root' AND plugin = 'unix_socket'; FLUSH PRIVILEGES;
+
+## OK!
+
