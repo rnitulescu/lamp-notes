@@ -1,0 +1,7 @@
+## Check status of network interfaces
+## A nice article with examples:
+## https://www.ibm.com/developerworks/community/blogs/58e72888-6340-46ac-b488-d31aa4058e9c/entry/linux_netstat_command_explained_with_10_examples?lang=en
+
+## Basic command to check listening ports and associated process
+# > sudo netstat -ltunp
+

@@ -1,0 +1,32 @@
+## All below commands to be prefaced by 'sudo'
+
+## See hostname (IPv4 address) -- no need for sudo here though
+# > hostname -I
+
+## Or to see the public version of it (ie, what the rest of the world sees) -- no need for sudo here either
+# > lynx icanhazip.com
+# This returns the ip address in IPv4 format
+
+## Start server
+# > systemctl start apache2
+
+## Check status
+# > systemctl status apache2
+
+## Stop server
+# > systemclt stop apache2
+
+## Restart server
+# > systemctl restart apache2
+
+## To restart after config changes without dropping any connections
+# > systemctl reload apache2
+
+## Disable auto-start at boot
+# > systemctl disable apache2
+## This seems to have issues. This link suggests other approach:
+## https://askubuntu.com/questions/170640/how-to-disable-apache2-server-from-auto-starting-on-boot
+
+## Enable auto-start at boot
+# > systemctl enable apache2
+
